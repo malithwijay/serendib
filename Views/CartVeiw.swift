@@ -13,7 +13,7 @@ struct CartVeiw: View {
     
     var body: some View {
         ScrollView{
-            Text("Your cart is empty")
+            Text("Your cart is empty!!")
             
         }.navigationTitle(Text("My Cart"))
             .padding(.top)
