@@ -21,3 +21,4 @@ var productListData = [ProductListModel(name: "Serendib Suit", image: "dom-hill1
                        ProductListModel(name: "Serendib Suit", image: "dom-hill1", price: 47),
                        ProductListModel(name: "Serendib Suit", image: "dom-hill1", price: 47),
                        ProductListModel(name: "Serendib Suit", image: "dom-hill2", price: 47)]
+
