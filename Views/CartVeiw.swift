@@ -12,11 +12,36 @@ struct CartVeiw: View {
     @EnvironmentObject var cartVM : CartVeiwModel
     
     var body: some View {
-        ScrollView{
-            Text("Your cart is empty!!!")
+        List{
+            if cartVM.products.count > 0 {
+                ForEach(cartVM.products, id: \.id) {
+                    product in
+                    ProductRow(product: product)
+                    
+                    
+                }
+                .swipeActions(edge : .trailing, content: {
+                    Button(action: {
+                        
+                    }, label: {
+                        Text("Delete")
+                    }).tint(.red)
+                })
+                
+                HStack{
+                    Text("your cart total is")
+                    Spacer()
+                    Text("$\(cartVM.total).00").bold()
+                }
+                .padding()
+            }else{
+                Text("Your cart is empty!!!")
+            }
+            
             
         }.navigationTitle(Text("My Cart"))
             .padding(.top)
+            
     }
 }
 

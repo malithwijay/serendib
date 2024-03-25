@@ -9,8 +9,8 @@ import SwiftUI
 
 struct HomeView: View {
     
-    @StateObject var productVM : ProductViewModel = ProductViewModel()
     @StateObject var cartVM : CartVeiwModel = CartVeiwModel()
+    @StateObject var productVM : ProductViewModel = ProductViewModel()
     
     var columns = [GridItem(.adaptive(minimum: 160), spacing: 20)]
     var body: some View {
@@ -20,8 +20,8 @@ struct HomeView: View {
                 NavigationView {
                     ScrollView {
                         LazyVGrid(columns: columns, spacing: 20) {
-                            ForEach(productVM.productData, id:\.id) { productData in
-                                ProductCard(productData: productData)
+                            ForEach(productVM.product, id:\.id) { productData in
+                                ProductCard(product: productData)
                                     .environmentObject(cartVM)
                             }
                         
@@ -29,11 +29,9 @@ struct HomeView: View {
                         
                     }.navigationTitle(Text("New Arrivals"))
                 .toolbar {
-
-                    
-                    
                     NavigationLink {
                         CartVeiw()
+                            .environmentObject(cartVM)
                     } label: {
                         Image(systemName:"bell").foregroundColor(.black)
 

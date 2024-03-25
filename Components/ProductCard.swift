@@ -9,22 +9,23 @@ import SwiftUI
 
 struct ProductCard: View {
     
-    var productData: ProductListModel
     @EnvironmentObject var cartVM : CartVeiwModel
+    var product: ProductDataModel
+    
     
     var body: some View {
         ZStack(alignment: .topTrailing) {
             ZStack(alignment: .bottom) {
-                Image(productData.image)
+                Image(product.image)
                     .resizable()
                     .cornerRadius(20)
                     .frame(width: 180)
                     .scaledToFit()
                 
                 VStack(alignment: .leading) {
-                    Text(productData.name)
+                    Text(product.name)
                         .bold()
-                    Text("$ \(productData.price)")
+                    Text("$ \(product.price)")
                         .font(.caption)
                     
                 }.padding()
@@ -38,7 +39,7 @@ struct ProductCard: View {
                 .shadow(radius: 3)
             
             Button {
-                cartVM.addToCart(productData: productData)
+                cartVM.addToCart(product: product)
             } label: {
                 Image(systemName: "plus")
                     .padding(10)
@@ -53,6 +54,6 @@ struct ProductCard: View {
 
 #Preview {
     
-    ProductCard(productData: productListData[0])
+    ProductCard(product: productListData[0])
        .environmentObject(CartVeiwModel())
 }

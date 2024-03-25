@@ -7,18 +7,18 @@
 
 import Foundation
 
-struct ProductListModel: Identifiable {
+struct ProductDataModel: Identifiable {
     var id = UUID()
     var name: String
     var image: String
     var price: Int
 }
 
-var productListData = [ProductListModel(name: "Serendib Suit", image: "dom-hill1", price: 47),
-                       ProductListModel(name: "Serendib Suit", image: "dom-hill2", price: 47),
-                       ProductListModel(name: "Serendib Suit", image: "dom-hill2", price: 47),
-                       ProductListModel(name: "Serendib Suit", image: "dom-hill2", price: 47),
-                       ProductListModel(name: "Serendib Suit", image: "dom-hill1", price: 47),
-                       ProductListModel(name: "Serendib Suit", image: "dom-hill1", price: 47),
-                       ProductListModel(name: "Serendib Suit", image: "dom-hill2", price: 47)]
+var productListData = [ProductDataModel(name: "Serendib Suit", image: "dom-hill1", price: 47),
+                       ProductDataModel(name: "Serendib Suit", image: "dom-hill2", price: 47),
+                       ProductDataModel(name: "Serendib Suit", image: "dom-hill2", price: 47),
+                       ProductDataModel(name: "Serendib Suit", image: "dom-hill2", price: 47),
+                       ProductDataModel(name: "Serendib Suit", image: "dom-hill1", price: 47),
+                       ProductDataModel(name: "Serendib Suit", image: "dom-hill1", price: 47),
+                       ProductDataModel(name: "Serendib Suit", image: "dom-hill2", price: 47)]
 

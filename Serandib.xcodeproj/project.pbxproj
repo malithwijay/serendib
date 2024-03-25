@@ -16,11 +16,12 @@
 		1B5F4FA22BAB7D4400823CD1 /* SerandibUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5F4FA12BAB7D4400823CD1 /* SerandibUITestsLaunchTests.swift */; };
 		1B5F4FB32BAB7F4E00823CD1 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5F4FB22BAB7F4E00823CD1 /* HomeView.swift */; };
 		1B5F4FBB2BAF08B900823CD1 /* ProductViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5F4FBA2BAF08B900823CD1 /* ProductViewModel.swift */; };
-		1B5F4FCD2BAF4F1300823CD1 /* ProductListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5F4FCC2BAF4F1300823CD1 /* ProductListModel.swift */; };
+		1B5F4FCD2BAF4F1300823CD1 /* ProductDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5F4FCC2BAF4F1300823CD1 /* ProductDataModel.swift */; };
 		1B5F4FCF2BAF518600823CD1 /* ProductCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5F4FCE2BAF518600823CD1 /* ProductCard.swift */; };
 		1B5F4FD12BAF74DA00823CD1 /* CartButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5F4FD02BAF74DA00823CD1 /* CartButton.swift */; };
 		1B5F4FD32BAF774800823CD1 /* CartVeiw.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5F4FD22BAF774800823CD1 /* CartVeiw.swift */; };
 		1B5F4FD62BB010CD00823CD1 /* CartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5F4FD52BB010CD00823CD1 /* CartViewModel.swift */; };
+		1B5F4FE62BB14FD400823CD1 /* ProductRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5F4FE52BB14FD400823CD1 /* ProductRow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,11 +54,12 @@
 		1B5F4FA12BAB7D4400823CD1 /* SerandibUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerandibUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		1B5F4FB22BAB7F4E00823CD1 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		1B5F4FBA2BAF08B900823CD1 /* ProductViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewModel.swift; sourceTree = "<group>"; };
-		1B5F4FCC2BAF4F1300823CD1 /* ProductListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListModel.swift; sourceTree = "<group>"; };
+		1B5F4FCC2BAF4F1300823CD1 /* ProductDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDataModel.swift; sourceTree = "<group>"; };
 		1B5F4FCE2BAF518600823CD1 /* ProductCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCard.swift; sourceTree = "<group>"; };
 		1B5F4FD02BAF74DA00823CD1 /* CartButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartButton.swift; sourceTree = "<group>"; };
 		1B5F4FD22BAF774800823CD1 /* CartVeiw.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartVeiw.swift; sourceTree = "<group>"; };
 		1B5F4FD52BB010CD00823CD1 /* CartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewModel.swift; sourceTree = "<group>"; };
+		1B5F4FE52BB14FD400823CD1 /* ProductRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductRow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,7 +150,7 @@
 		1B5F4FAF2BAB7DF300823CD1 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				1B5F4FCC2BAF4F1300823CD1 /* ProductListModel.swift */,
+				1B5F4FCC2BAF4F1300823CD1 /* ProductDataModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -176,6 +178,7 @@
 			children = (
 				1B5F4FCE2BAF518600823CD1 /* ProductCard.swift */,
 				1B5F4FD02BAF74DA00823CD1 /* CartButton.swift */,
+				1B5F4FE52BB14FD400823CD1 /* ProductRow.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -316,8 +319,9 @@
 			files = (
 				1B5F4FB32BAB7F4E00823CD1 /* HomeView.swift in Sources */,
 				1B5F4FD32BAF774800823CD1 /* CartVeiw.swift in Sources */,
+				1B5F4FE62BB14FD400823CD1 /* ProductRow.swift in Sources */,
 				1B5F4F872BAB7D4100823CD1 /* ContentView.swift in Sources */,
-				1B5F4FCD2BAF4F1300823CD1 /* ProductListModel.swift in Sources */,
+				1B5F4FCD2BAF4F1300823CD1 /* ProductDataModel.swift in Sources */,
 				1B5F4F852BAB7D4100823CD1 /* SerandibApp.swift in Sources */,
 				1B5F4FD12BAF74DA00823CD1 /* CartButton.swift in Sources */,
 				1B5F4FD62BB010CD00823CD1 /* CartViewModel.swift in Sources */,

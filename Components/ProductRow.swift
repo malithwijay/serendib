@@ -8,11 +8,40 @@
 import SwiftUI
 
 struct ProductRow: View {
+    
+    @EnvironmentObject var cartVM : CartVeiwModel
+    var product: ProductDataModel
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        HStack(spacing: 20){
+            Image(product.image)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 50)
+                .cornerRadius(10)
+            
+            
+            VStack(alignment: .leading, spacing: 10) {
+                Text(product.name)
+                    .bold()
+                
+                Text("$\(product.price)")
+                    
+            }
+            
+            Spacer()
+            
+            
+            
+            
+        }.padding(.horizontal)
+            .frame(maxWidth: .infinity,alignment: .leading)
+        
     }
 }
 
+
 #Preview {
-    ProductRow()
+    ProductRow(product: productListData[3])
+        .environmentObject(CartVeiwModel())
 }

@@ -10,5 +10,5 @@ import SwiftUI
 
 class ProductViewModel: ObservableObject {
     
-    @Published var productData = productListData
+    @Published var product = productListData
 }
