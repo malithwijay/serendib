@@ -10,6 +10,7 @@ import SwiftUI
 struct CartVeiw: View {
     
     @EnvironmentObject var cartVM : CartVeiwModel
+
     
     var body: some View {
         List{
@@ -17,16 +18,9 @@ struct CartVeiw: View {
                 ForEach(cartVM.products, id: \.id) {
                     product in
                     ProductRow(product: product)
-                    
-                    
+  
                 }
-                .swipeActions(edge : .trailing, content: {
-                    Button(action: {
-                        
-                    }, label: {
-                        Text("Delete")
-                    }).tint(.red)
-                })
+                
                 
                 HStack{
                     Text("your cart total is")

@@ -19,11 +19,21 @@ struct ProductRow: View {
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 50)
                 .cornerRadius(10)
-            
+                .swipeActions(edge : .trailing, content: {
+                    
+                    Button {
+                        cartVM.removeFromCart(product: product)
+                    } label: {
+                        Text("Delete")
+                    }.tint(.red)
+                })
+                
+
             
             VStack(alignment: .leading, spacing: 10) {
                 Text(product.name)
                     .bold()
+                
                 
                 Text("$\(product.price)")
                     
@@ -32,11 +42,10 @@ struct ProductRow: View {
             Spacer()
             
             
-            
-            
         }.padding(.horizontal)
             .frame(maxWidth: .infinity,alignment: .leading)
         
+            
     }
 }
 
