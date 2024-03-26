@@ -22,6 +22,7 @@
 		1B5F4FD32BAF774800823CD1 /* CartVeiw.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5F4FD22BAF774800823CD1 /* CartVeiw.swift */; };
 		1B5F4FD62BB010CD00823CD1 /* CartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5F4FD52BB010CD00823CD1 /* CartViewModel.swift */; };
 		1B5F4FE62BB14FD400823CD1 /* ProductRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5F4FE52BB14FD400823CD1 /* ProductRow.swift */; };
+		1B5F4FEC2BB2DD0E00823CD1 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5F4FEB2BB2DD0E00823CD1 /* LoginView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,7 @@
 		1B5F4FD22BAF774800823CD1 /* CartVeiw.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartVeiw.swift; sourceTree = "<group>"; };
 		1B5F4FD52BB010CD00823CD1 /* CartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewModel.swift; sourceTree = "<group>"; };
 		1B5F4FE52BB14FD400823CD1 /* ProductRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductRow.swift; sourceTree = "<group>"; };
+		1B5F4FEB2BB2DD0E00823CD1 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +171,7 @@
 			children = (
 				1B5F4FB22BAB7F4E00823CD1 /* HomeView.swift */,
 				1B5F4FD22BAF774800823CD1 /* CartVeiw.swift */,
+				1B5F4FEB2BB2DD0E00823CD1 /* LoginView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -325,6 +328,7 @@
 				1B5F4F852BAB7D4100823CD1 /* SerandibApp.swift in Sources */,
 				1B5F4FD12BAF74DA00823CD1 /* CartButton.swift in Sources */,
 				1B5F4FD62BB010CD00823CD1 /* CartViewModel.swift in Sources */,
+				1B5F4FEC2BB2DD0E00823CD1 /* LoginView.swift in Sources */,
 				1B5F4FBB2BAF08B900823CD1 /* ProductViewModel.swift in Sources */,
 				1B5F4FCF2BAF518600823CD1 /* ProductCard.swift in Sources */,
 			);
@@ -490,6 +494,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Serandib/Preview Content\"";
+				DEVELOPMENT_TEAM = M5ZYTRBQ39;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -518,6 +523,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Serandib/Preview Content\"";
+				DEVELOPMENT_TEAM = M5ZYTRBQ39;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;

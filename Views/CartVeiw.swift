@@ -10,7 +10,6 @@ import SwiftUI
 struct CartVeiw: View {
     
     @EnvironmentObject var cartVM : CartVeiwModel
-
     
     var body: some View {
         List{
@@ -22,12 +21,7 @@ struct CartVeiw: View {
                 }
                 
                 
-                HStack{
-                    Text("your cart total is")
-                    Spacer()
-                    Text("$\(cartVM.total).00").bold()
-                }
-                .padding()
+                
             }else{
                 Text("Your cart is empty!!!")
             }
@@ -35,8 +29,32 @@ struct CartVeiw: View {
             
         }.navigationTitle(Text("My Cart"))
             .padding(.top)
-            
+        
+        HStack{
+            Text("your cart total is")
+            Spacer()
+            Text("$\(cartVM.total).00").bold()
+        }
+        .padding()
+        
+        
+        
+        Button(action:{
+            //loginVM.verifyLogin()
+        },label: {
+            RoundedRectangle(cornerRadius: 10).frame(height:50)
+                .padding(.horizontal,47)
+                .padding(.top)
+                .foregroundColor(.black)
+                }).overlay{
+                    Text("Checkout").bold()
+                        .foregroundStyle(.white)
+                        .padding(.top)
+                }
+        
+        
     }
+    
 }
 
 #Preview {

@@ -30,8 +30,6 @@ struct HomeView: View {
                     }.navigationTitle(Text("New Arrivals"))
                 .toolbar {
 
-                    
-                    
                     NavigationLink {
                         CartVeiw()
                         

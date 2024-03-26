@@ -12,7 +12,7 @@ struct CartButton: View {
     var body: some View {
         ZStack(alignment: .topTrailing) {
             Image(systemName: "bag")
-                .padding(.top, 5)
+                .padding(.top,5)
                 .foregroundColor(.black)
             
             if numberOfProduct > 0 {

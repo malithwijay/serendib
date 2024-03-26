@@ -11,6 +11,7 @@ struct ProductRow: View {
     
     @EnvironmentObject var cartVM : CartVeiwModel
     var product: ProductDataModel
+    @State var getSelection = 0
     
     var body: some View {
         HStack(spacing: 20){
@@ -38,15 +39,44 @@ struct ProductRow: View {
                 Text("$\(product.price)")
                     
             }
-            
-            Spacer()
-            
-            
+ 
         }.padding(.horizontal)
             .frame(maxWidth: .infinity,alignment: .leading)
+            .background(.yellow)
         
-            
+        
+        HStack {
+            Circle()
+                        .frame(width: 30)
+                        .frame(height: 30)
+                        .cornerRadius(10)
+                        .foregroundColor(getSelection != 0 ? Color.gray : Color.black)
+                        .overlay{
+                            Button(action: {
+                                getSelection = 0
+                                
+                            }, label: {
+                                Text("S")
+                            })
+                            .tint(.white)
+                    }
+            Circle()
+                        .frame(width: 30)
+                        .frame(height: 30)
+                        .cornerRadius(10)
+                        .foregroundColor(getSelection != 1 ? Color.gray : Color.black)
+                        .overlay{
+                            Button(action: {
+                                getSelection = 1
+                            }, label: {
+                                Text("M")
+                            })
+                            .tint(.white)
+                    }
+        }
+        
     }
+    
 }
 
 
