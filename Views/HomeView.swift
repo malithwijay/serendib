@@ -31,7 +31,7 @@ struct HomeView: View {
                 .toolbar {
 
                     NavigationLink {
-                        CartVeiw()
+                        ProductView()
                         
                     } label: {
                         Image(systemName:"bell").foregroundColor(.black)
@@ -42,12 +42,14 @@ struct HomeView: View {
                             .environmentObject(cartVM)
                     } label: {
                         CartButton(numberOfProduct: cartVM.products.count)
+                    
                     }
                     
                     
                 }
             
         }.navigationViewStyle(StackNavigationViewStyle())
+        
 }
 }
 

@@ -19,7 +19,8 @@ struct ProductCard: View {
                 Image(product.image)
                     .resizable()
                     .cornerRadius(20)
-                    .frame(width: 180)
+                    .frame(width: 140)
+                    .frame(height: 200)
                     .scaledToFit()
                 
                 VStack(alignment: .leading) {
@@ -29,7 +30,7 @@ struct ProductCard: View {
                         .font(.caption)
                     
                 }.padding()
-                 .frame(width: 180, alignment: .leading)
+                 .frame(width: 140, alignment: .leading)
                  .background(.black)
                  .foregroundColor(.white).bold()
                  .opacity(0.8)

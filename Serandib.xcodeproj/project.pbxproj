@@ -23,6 +23,7 @@
 		1B5F4FD62BB010CD00823CD1 /* CartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5F4FD52BB010CD00823CD1 /* CartViewModel.swift */; };
 		1B5F4FE62BB14FD400823CD1 /* ProductRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5F4FE52BB14FD400823CD1 /* ProductRow.swift */; };
 		1B5F4FEC2BB2DD0E00823CD1 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5F4FEB2BB2DD0E00823CD1 /* LoginView.swift */; };
+		1B5F4FEE2BB2EA4800823CD1 /* ProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5F4FED2BB2EA4800823CD1 /* ProductView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,7 @@
 		1B5F4FD52BB010CD00823CD1 /* CartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewModel.swift; sourceTree = "<group>"; };
 		1B5F4FE52BB14FD400823CD1 /* ProductRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductRow.swift; sourceTree = "<group>"; };
 		1B5F4FEB2BB2DD0E00823CD1 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		1B5F4FED2BB2EA4800823CD1 /* ProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,6 +174,7 @@
 				1B5F4FB22BAB7F4E00823CD1 /* HomeView.swift */,
 				1B5F4FD22BAF774800823CD1 /* CartVeiw.swift */,
 				1B5F4FEB2BB2DD0E00823CD1 /* LoginView.swift */,
+				1B5F4FED2BB2EA4800823CD1 /* ProductView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -324,6 +327,7 @@
 				1B5F4FD32BAF774800823CD1 /* CartVeiw.swift in Sources */,
 				1B5F4FE62BB14FD400823CD1 /* ProductRow.swift in Sources */,
 				1B5F4F872BAB7D4100823CD1 /* ContentView.swift in Sources */,
+				1B5F4FEE2BB2EA4800823CD1 /* ProductView.swift in Sources */,
 				1B5F4FCD2BAF4F1300823CD1 /* ProductDataModel.swift in Sources */,
 				1B5F4F852BAB7D4100823CD1 /* SerandibApp.swift in Sources */,
 				1B5F4FD12BAF74DA00823CD1 /* CartButton.swift in Sources */,

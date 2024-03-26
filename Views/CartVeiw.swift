@@ -20,8 +20,6 @@ struct CartVeiw: View {
   
                 }
                 
-                
-                
             }else{
                 Text("Your cart is empty!!!")
             }
@@ -51,7 +49,6 @@ struct CartVeiw: View {
                         .foregroundStyle(.white)
                         .padding(.top)
                 }
-        
         
     }
     

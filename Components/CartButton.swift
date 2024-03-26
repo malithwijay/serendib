@@ -22,8 +22,9 @@ struct CartButton: View {
                     .frame(width: 15, height: 15)
                     .background(Color(hue: 1.0, saturation: 0.89, brightness: 0.835))
                     .cornerRadius(50)
+                    .padding(-6)
             }
-        }
+        }.padding(10)
     }
 }
 
