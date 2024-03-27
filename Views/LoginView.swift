@@ -9,11 +9,16 @@ import SwiftUI
 
 struct LoginView: View {
     
-    //@StateObject private var viewModel = AuthenticationViewModel()
+    @StateObject private var viewModel = AuthenticationModel()
     @State private var email = ""
     @State private var password = ""
     @State private var shouldNavigateToHome = false
     @EnvironmentObject var cartVM : CartVeiwModel
+    
+    
+    private var homeViewModel: ProductViewModel {
+        ProductViewModel() // Initialize HomeViewModel with the cart.
+    }
     
     var body: some View {
         NavigationView {
@@ -45,7 +50,7 @@ struct LoginView: View {
                 
                 
                 Button("Login") {
-                   // viewModel.login(email: email, password: password)
+                   viewModel.login(email: email, password: password)
                 }
                 .frame(width: 200)
                 .padding(10)
@@ -54,19 +59,21 @@ struct LoginView: View {
                 .cornerRadius(10)
                 
                 
-//                if let errorMessage = viewModel.errorMessage {
-//                    Text(errorMessage)
-//                        .foregroundColor(.red)
-//                }
-//                NavigationLink(destination: ), isActive: $shouldNavigateToHome) {
-//                    EmptyView()
-//                }
-//                .hidden()
+                if let errorMessage = viewModel.errorMessage {
+                    Text(errorMessage)
+                        .foregroundColor(.red)
+                }
+                NavigationLink(destination: HomeView(), isActive: $shouldNavigateToHome) {
+                 EmptyView()
+                }
+                .hidden()
                 
             }
             .padding()
             .onAppear {
-               
+                viewModel.onLoginSuccess = {
+                    self.shouldNavigateToHome = true
+                }
             }
             
             
