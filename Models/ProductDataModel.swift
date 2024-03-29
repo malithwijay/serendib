@@ -16,6 +16,7 @@ struct ProductDataModel: Codable, Identifiable {
     var product_category: String
     var product_sub_category: String
 }
+
 //var productListData = [ProductDataModel(name: "Serendib Suit", image: "dom-hill1", price: 47),
 //                       ProductDataModel(name: "Serendib Suit", image: "dom-hill2", price: 47),
 //                       ProductDataModel(name: "Serendib Suit", image: "dom-hill2", price: 47),

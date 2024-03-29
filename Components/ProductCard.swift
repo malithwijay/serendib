@@ -8,80 +8,81 @@
 import SwiftUI
 
 struct ProductCard: View {
-    
-    @EnvironmentObject var cartVM : CartVeiwModel
+    @EnvironmentObject var cartVM: CartVeiwModel
     var productDM: ProductDataModel
-    
     
     var body: some View {
         NavigationLink(destination: ProductDetailsView()) {
-            ZStack(alignment: .topTrailing) {
-                ZStack(alignment: .bottom) {
-                    let imageURL = URL(string: productDM.product_image)!
-                    AsyncImage(url: imageURL) { phase in
-                        switch phase {
-                        case .empty:
-                            ProgressView() // Placeholder while loading
-                                .cornerRadius(10)
-                                .cornerRadius(10)
-                                .frame(width: 140,height: 200)
-                        case .success(let image):
-                            image
-                                .resizable()
-                                .cornerRadius(10)
-                                .cornerRadius(10)
-                                .frame(width: 140,height: 200)
-                        case .failure(let error):
-                            Text("Failed to load image")
-                                .foregroundColor(.red)
-                                .padding()
-                                .frame(width: 140,height: 200)
-                                .overlay(
-                                    RoundedRectangle(cornerRadius: 10)
-                                        .stroke(Color.red, lineWidth: 1)
-                                )
-                                .onTapGesture {
-                                    print("Error loading image: \(error.localizedDescription)")
-                                }
-                        default:
-                            EmptyView()
-                        }
+            ZStack(alignment: .bottomTrailing) {
+                let imageURL = URL(string: productDM.product_image)!
+                AsyncImage(url: imageURL) { phase in
+                    switch phase {
+                    case .empty:
+                        ProgressView() // Placeholder while loading
+                            .cornerRadius(20)
+                            .frame(width: 180, height: 250)
+                    case .success(let image):
+                        image
+                            .resizable()
+                            .cornerRadius(20)
+                            .frame(width: 180, height: 250)
+                    case .failure(let error):
+                        Text("Failed to load image")
+                            .foregroundColor(.red)
+                            .padding()
+                            .frame(width: 180, height: 250)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 20)
+                                    .stroke(Color.red, lineWidth: 1)
+                            )
+                            .onTapGesture {
+                                print("Error loading image: \(error.localizedDescription)")
+                            }
+                    default:
+                        EmptyView()
                     }
-                    
-                    VStack(alignment: .leading) {
-                        Text(productDM.product_name)
-                            .bold()
-                        Text("$ \(productDM.product_price)")
-                            .font(.caption)
-                        
-                    }.padding()
-                     .frame(width: 140, alignment: .leading)
-                     .background(.black)
-                     .foregroundColor(.white).bold()
-                     .opacity(0.8)
-                     .cornerRadius(20)
-            
-                }.frame(width: 180, height: 250)
-                    .shadow(radius: 3)
-                
-                Button {
-                    //cartVM.addToCart(product: product)
-                } label: {
-                    Image(systemName: "plus")
-                        .padding(10)
-                        .foregroundColor(.white)
-                        .background(.black)
-                        .cornerRadius(50)
-                        .padding([.leading, .trailing, .bottom, .top] ,10)
                 }
                 
+                VStack(alignment: .leading, spacing: 8) {
+                    Text(productDM.product_name)
+                        .font(.title3)
+                        .bold()
+                        .foregroundColor(.white)
+                        .padding(.horizontal)
+                        .padding(.top, 8)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .background(Color.black.opacity(0.8))
+                        .cornerRadius(10)
+                    
+                    Text("$ \(productDM.product_price)")
+                        .font(.headline)
+                        .foregroundColor(.white)
+                        .padding(.horizontal)
+                        .padding(.bottom, 8)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .background(Color.black.opacity(0.8))
+                        .cornerRadius(10)
+                }
+                
+                Button(action: {
+                    cartVM.addToCart(product: productDM)
+                }) {
+                    Image(systemName: "cart.badge.plus")
+                        .foregroundColor(.black)
+                        .padding()
+                        .background(Color.white)
+                        .clipShape(Circle())
+                        .padding(.trailing, 8)
+                        .padding(.bottom, 8)
+                }
             }
+            .frame(width: 180, height: 250)
+            .shadow(radius: 5)
+            .padding(.leading)
         }
     }
 }
 
-//#Preview {
-//    
-//    ProductCard(product: productListData[0])
-//       .environmentObject(CartVeiwModel())
-//}
+// Usage example:
+// ProductCard(productDM: productListData[0])
+//    .environmentObject(CartVeiwModel())

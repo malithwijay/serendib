@@ -11,7 +11,8 @@ struct HomeView: View {
     
     @StateObject var cartVM : CartVeiwModel = CartVeiwModel()
     @StateObject var productVM : ProductViewModel = ProductViewModel()
-    //@State private var showingItem = false
+    @State private var showMenOptions = false
+    @State private var showWomenOptions = false
     
     
     var columns = [GridItem(.adaptive(minimum: 160), spacing: 20)]
@@ -19,44 +20,47 @@ struct HomeView: View {
         
         Text("SERENDIB").font(.title).foregroundColor(Color.black).padding(-8)
         
-        
-//        ScrollView(.horizontal) {
-//            HStack {
-//                Button("men") {
-//                    
-//                }
-//                .frame(width: 100)
-//                .padding(10)
-//                .background(Color.black)
-//                .foregroundColor(.white)
-//                .cornerRadius(10)
-//                .opacity(0.7)
-//                
-//                
-//                Button("women") {
-//                    // viewModel.login(email: email, password: password)
-//                }
-//                .frame(width: 100)
-//                .padding(10)
-//                .background(Color.black)
-//                .foregroundColor(.white)
-//                .cornerRadius(10)
-//                .opacity(10)
-//                
-//                Button("kids") {
-//                    // viewModel.login(email: email, password: password)
-//                }
-//                .frame(width: 100)
-//                .padding(10)
-//                .background(Color.black)
-//                .foregroundColor(.white)
-//                .cornerRadius(10)
-//                .opacity(10)
-//            }.padding([.leading, .top])
-//        }
-        
         NavigationView {
+
             ScrollView {
+
+                HStack() {
+                    Button("Men") {
+                        showMenOptions.toggle()
+                    }
+                    .padding()
+                    .background(Color.blue)
+                    .foregroundColor(.white)
+                    .cornerRadius(10)
+                    
+                    Button("Women") {
+                        showWomenOptions.toggle()
+                    }
+                    .padding()
+                    .background(Color.pink)
+                    .foregroundColor(.white)
+                    .cornerRadius(10)
+                }
+                
+                if showMenOptions {
+                                HStack {
+                                    TagButton(title: "Shirts")
+                                    TagButton(title: "Pants")
+                                    TagButton(title: "Shoes")
+                                }
+                            }
+                            
+                if showWomenOptions {
+                                HStack {
+                                    TagButton(title: "Dresses")
+                                    TagButton(title: "Skirts")
+                                    TagButton(title: "Sandals")
+                                }
+                            }
+                
+                
+                
+                
                 LazyVGrid(columns: columns, spacing: 20) {
                     ForEach(productVM.productDM, id:\.id) { productData in
                         ProductCard(productDM: productData)
@@ -66,13 +70,9 @@ struct HomeView: View {
                     
                     
                     
-                }.navigationTitle(Text("Mens"))
-                    .onAppear(){
-                        productVM.fetchData()
-                    }
-                
-                
+                }.navigationTitle(Text("Dashboard"))
                     .toolbar {
+
                         NavigationLink {
                              CartVeiw()
                               .environmentObject(cartVM)
@@ -80,14 +80,40 @@ struct HomeView: View {
                             CartButton(numberOfProduct: cartVM.products.count)
                             
                         }
+                        
+                        NavigationLink {
+                             UserView()
+                              .environmentObject(cartVM)
+                        } label: {
+                            Image(systemName: "person.circle")
+                            
+                        }
                     }
-                
                 
                 
             }.navigationViewStyle(StackNavigationViewStyle())
             
         }
         
+    }
+    
+    
+    struct TagButton: View {
+        var title: String
+        
+        var body: some View {
+            Button(action: {
+                // Handle button tap
+                print("Selected: \(title)")
+            }) {
+                Text(title)
+                    .padding(.horizontal, 10)
+                    .padding(.vertical, 5)
+                    .background(Color.gray)
+                    .foregroundColor(.white)
+                    .cornerRadius(10)
+            }
+        }
     }
     
 }
