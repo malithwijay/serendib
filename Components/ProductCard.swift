@@ -12,7 +12,7 @@ struct ProductCard: View {
     var productDM: ProductDataModel
     
     var body: some View {
-        NavigationLink(destination: ProductDetailsView()) {
+        NavigationLink(destination: ProductDetailsView(productDM: productDM)) {
             ZStack(alignment: .bottomTrailing) {
                 let imageURL = URL(string: productDM.product_image)!
                 AsyncImage(url: imageURL) { phase in
@@ -54,7 +54,7 @@ struct ProductCard: View {
                         .background(Color.black.opacity(0.8))
                         .cornerRadius(10)
                     
-                    Text("$ \(productDM.product_price)")
+                    Text("$ \(productDM.product_price , specifier: "%.2f")" )
                         .font(.headline)
                         .foregroundColor(.white)
                         .padding(.horizontal)
@@ -78,7 +78,6 @@ struct ProductCard: View {
             }
             .frame(width: 180, height: 250)
             .shadow(radius: 5)
-            .padding(.leading)
         }
     }
 }

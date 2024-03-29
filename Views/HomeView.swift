@@ -58,9 +58,6 @@ struct HomeView: View {
                                 }
                             }
                 
-                
-                
-                
                 LazyVGrid(columns: columns, spacing: 20) {
                     ForEach(productVM.productDM, id:\.id) { productData in
                         ProductCard(productDM: productData)
