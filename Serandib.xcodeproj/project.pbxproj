@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1B48AAEB2BB4DFF400F3A9E5 /* AuthenticationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B48AAEA2BB4DFF400F3A9E5 /* AuthenticationModel.swift */; };
 		1B5F4F852BAB7D4100823CD1 /* SerandibApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5F4F842BAB7D4100823CD1 /* SerandibApp.swift */; };
 		1B5F4F872BAB7D4100823CD1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5F4F862BAB7D4100823CD1 /* ContentView.swift */; };
 		1B5F4F892BAB7D4400823CD1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B5F4F882BAB7D4400823CD1 /* Assets.xcassets */; };
@@ -26,7 +25,6 @@
 		1B5F4FEC2BB2DD0E00823CD1 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5F4FEB2BB2DD0E00823CD1 /* LoginView.swift */; };
 		1B5F4FEE2BB2EA4800823CD1 /* ProductDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5F4FED2BB2EA4800823CD1 /* ProductDetailsView.swift */; };
 		1B5F4FF02BB479C500823CD1 /* ColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5F4FEF2BB479C500823CD1 /* ColorPicker.swift */; };
-		1B5F4FF62BB4D7F700823CD1 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5F4FF52BB4D7F700823CD1 /* UserModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,7 +45,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1B48AAEA2BB4DFF400F3A9E5 /* AuthenticationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationModel.swift; sourceTree = "<group>"; };
 		1B5F4F812BAB7D4100823CD1 /* Serandib.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Serandib.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B5F4F842BAB7D4100823CD1 /* SerandibApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerandibApp.swift; sourceTree = "<group>"; };
 		1B5F4F862BAB7D4100823CD1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -69,7 +66,6 @@
 		1B5F4FEB2BB2DD0E00823CD1 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		1B5F4FED2BB2EA4800823CD1 /* ProductDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailsView.swift; sourceTree = "<group>"; };
 		1B5F4FEF2BB479C500823CD1 /* ColorPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPicker.swift; sourceTree = "<group>"; };
-		1B5F4FF52BB4D7F700823CD1 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,8 +157,6 @@
 			isa = PBXGroup;
 			children = (
 				1B5F4FCC2BAF4F1300823CD1 /* ProductDataModel.swift */,
-				1B5F4FF52BB4D7F700823CD1 /* UserModel.swift */,
-				1B48AAEA2BB4DFF400F3A9E5 /* AuthenticationModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -338,10 +332,8 @@
 				1B5F4FE62BB14FD400823CD1 /* ProductRow.swift in Sources */,
 				1B5F4F872BAB7D4100823CD1 /* ContentView.swift in Sources */,
 				1B5F4FEE2BB2EA4800823CD1 /* ProductDetailsView.swift in Sources */,
-				1B48AAEB2BB4DFF400F3A9E5 /* AuthenticationModel.swift in Sources */,
 				1B5F4FCD2BAF4F1300823CD1 /* ProductDataModel.swift in Sources */,
 				1B5F4F852BAB7D4100823CD1 /* SerandibApp.swift in Sources */,
-				1B5F4FF62BB4D7F700823CD1 /* UserModel.swift in Sources */,
 				1B5F4FD12BAF74DA00823CD1 /* CartButton.swift in Sources */,
 				1B5F4FD62BB010CD00823CD1 /* CartViewModel.swift in Sources */,
 				1B5F4FEC2BB2DD0E00823CD1 /* LoginView.swift in Sources */,

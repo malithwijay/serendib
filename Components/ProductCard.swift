@@ -10,24 +10,48 @@ import SwiftUI
 struct ProductCard: View {
     
     @EnvironmentObject var cartVM : CartVeiwModel
-    var product: ProductDataModel
+    var productDM: ProductDataModel
     
     
     var body: some View {
         NavigationLink(destination: ProductDetailsView()) {
             ZStack(alignment: .topTrailing) {
                 ZStack(alignment: .bottom) {
-                    Image(product.image)
-                        .resizable()
-                        .cornerRadius(20)
-                        .frame(width: 140)
-                        .frame(height: 200)
-                        .scaledToFit()
+                    let imageURL = URL(string: productDM.product_image)!
+                    AsyncImage(url: imageURL) { phase in
+                        switch phase {
+                        case .empty:
+                            ProgressView() // Placeholder while loading
+                                .cornerRadius(10)
+                                .cornerRadius(10)
+                                .frame(width: 140,height: 200)
+                        case .success(let image):
+                            image
+                                .resizable()
+                                .cornerRadius(10)
+                                .cornerRadius(10)
+                                .frame(width: 140,height: 200)
+                        case .failure(let error):
+                            Text("Failed to load image")
+                                .foregroundColor(.red)
+                                .padding()
+                                .frame(width: 140,height: 200)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 10)
+                                        .stroke(Color.red, lineWidth: 1)
+                                )
+                                .onTapGesture {
+                                    print("Error loading image: \(error.localizedDescription)")
+                                }
+                        default:
+                            EmptyView()
+                        }
+                    }
                     
                     VStack(alignment: .leading) {
-                        Text(product.name)
+                        Text(productDM.product_name)
                             .bold()
-                        Text("$ \(product.price)")
+                        Text("$ \(productDM.product_price)")
                             .font(.caption)
                         
                     }.padding()
@@ -41,7 +65,7 @@ struct ProductCard: View {
                     .shadow(radius: 3)
                 
                 Button {
-                    cartVM.addToCart(product: product)
+                    //cartVM.addToCart(product: product)
                 } label: {
                     Image(systemName: "plus")
                         .padding(10)
@@ -56,8 +80,8 @@ struct ProductCard: View {
     }
 }
 
-#Preview {
-    
-    ProductCard(product: productListData[0])
-       .environmentObject(CartVeiwModel())
-}
+//#Preview {
+//    
+//    ProductCard(product: productListData[0])
+//       .environmentObject(CartVeiwModel())
+//}

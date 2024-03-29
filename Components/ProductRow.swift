@@ -15,7 +15,7 @@ struct ProductRow: View {
     
     var body: some View {
         HStack(spacing: 20){
-            Image(product.image)
+            Image(product.product_image)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 50)
@@ -32,11 +32,11 @@ struct ProductRow: View {
 
             
             VStack(alignment: .leading, spacing: 10) {
-                Text(product.name)
+                Text(product.product_name)
                     .bold()
                 
                 
-                Text("$\(product.price)")
+                Text("$\(product.product_price)")
                     
             }
  
@@ -80,7 +80,7 @@ struct ProductRow: View {
 }
 
 
-#Preview {
-    ProductRow(product: productListData[3])
-        .environmentObject(CartVeiwModel())
-}
+//#Preview {
+//    ProductRow(product: productListData[3])
+//        .environmentObject(CartVeiwModel())
+//}
