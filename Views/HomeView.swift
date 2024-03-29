@@ -90,8 +90,67 @@ struct HomeView: View {
                 
             }.navigationViewStyle(StackNavigationViewStyle())
             
+            
         }
         
+        VStack {
+                    
+                    HStack {
+                        Spacer()
+                        
+                        Button(action: {
+
+                        }) {
+                            VStack {
+                                Image(systemName: "house.fill")
+                                    .foregroundColor(.blue)
+                                    .font(.system(size: 24))
+                                    .padding()
+                                Text("Home")
+                                    .foregroundColor(.blue)
+                                    .font(.system(size: 14))
+                            }
+                        }
+                        
+                        Spacer()
+                        
+                        Button(action: {
+
+                        }) {
+                            VStack {
+                                Image(systemName: "shippingbox.fill")
+                                    .foregroundColor(.red)
+                                    .font(.system(size: 24))
+                                    .padding()
+                                Text("Orders")
+                                    .foregroundColor(.red)
+                                    .font(.system(size: 14))
+                            }
+                        }
+                        
+                        Spacer()
+                        
+                        Button(action: {
+                            
+                        }) {
+                            VStack {
+                                Image(systemName: "person.fill")
+                                    .foregroundColor(.green)
+                                    .font(.system(size: 24))
+                                    .padding()
+                                Text("Sign  Out")
+                                    .foregroundColor(.green)
+                                    .font(.system(size: 14))
+                            }
+                        }
+                        
+                        Spacer()
+                    }
+
+                    .background(Color.white)
+                
+               }
+   
     }
     
     

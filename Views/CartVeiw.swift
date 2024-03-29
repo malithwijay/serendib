@@ -31,7 +31,7 @@ struct CartVeiw: View {
         HStack{
             Text("your cart total is")
             Spacer()
-            Text("$\(cartVM.total).00").bold()
+            Text("$ \(cartVM.total, specifier: "%.2f")").bold()
         }
         .padding()
         
