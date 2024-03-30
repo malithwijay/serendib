@@ -27,6 +27,7 @@ struct CartVeiw: View {
             
         }.navigationTitle(Text("My Cart"))
             .padding(.top)
+            
         
         HStack{
             Text("your cart total is")

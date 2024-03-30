@@ -19,19 +19,19 @@ struct ProductRow: View {
             AsyncImage(url: imageURL) { phase in
                 switch phase {
                 case .empty:
-                    ProgressView() // Placeholder while loading
+                    ProgressView() 
                         .cornerRadius(20)
-                        .frame(width: 180, height: 250)
+                        .frame(width: 80, height: 120)
                 case .success(let image):
                     image
                         .resizable()
                         .cornerRadius(20)
-                        .frame(width: 180, height: 250)
+                        .frame(width: 80, height: 120)
                 case .failure(let error):
                     Text("Failed to load image")
                         .foregroundColor(.red)
                         .padding()
-                        .frame(width: 180, height: 250)
+                        .frame(width: 80, height: 120)
                         .overlay(
                             RoundedRectangle(cornerRadius: 20)
                                 .stroke(Color.red, lineWidth: 1)
@@ -59,7 +59,7 @@ struct ProductRow: View {
                     .bold()
                 
                 
-                Text("$\(product.product_price)")
+                Text("$\(product.product_price, specifier: "%.2f")")
                     
             }
  
