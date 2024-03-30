@@ -15,11 +15,34 @@ struct ProductRow: View {
     
     var body: some View {
         HStack(spacing: 20){
-            Image(product.product_image)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 50)
-                .cornerRadius(10)
+            let imageURL = URL(string: product.product_image)!
+            AsyncImage(url: imageURL) { phase in
+                switch phase {
+                case .empty:
+                    ProgressView() // Placeholder while loading
+                        .cornerRadius(20)
+                        .frame(width: 180, height: 250)
+                case .success(let image):
+                    image
+                        .resizable()
+                        .cornerRadius(20)
+                        .frame(width: 180, height: 250)
+                case .failure(let error):
+                    Text("Failed to load image")
+                        .foregroundColor(.red)
+                        .padding()
+                        .frame(width: 180, height: 250)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 20)
+                                .stroke(Color.red, lineWidth: 1)
+                        )
+                        .onTapGesture {
+                            print("Error loading image: \(error.localizedDescription)")
+                        }
+                default:
+                    EmptyView()
+                }
+            }
                 .swipeActions(edge : .trailing, content: {
                     
                     Button {

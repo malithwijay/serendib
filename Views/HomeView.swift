@@ -23,10 +23,12 @@ struct HomeView: View {
         NavigationView {
 
             ScrollView {
-
-                HStack() {
+                
+                HStack {
                     Button("Men") {
+                        productVM.fetchData(forCategory: "mens")
                         showMenOptions.toggle()
+                        showWomenOptions = false
                     }
                     .padding()
                     .background(Color.blue)
@@ -34,29 +36,44 @@ struct HomeView: View {
                     .cornerRadius(10)
                     
                     Button("Women") {
+                        productVM.fetchData(forCategory: "womens")
                         showWomenOptions.toggle()
+                        showMenOptions = false
                     }
                     .padding()
                     .background(Color.pink)
                     .foregroundColor(.white)
                     .cornerRadius(10)
                 }
+            
                 
                 if showMenOptions {
-                                HStack {
-                                    TagButton(title: "Shirts")
-                                    TagButton(title: "Pants")
-                                    TagButton(title: "Shoes")
-                                }
-                            }
-                            
+                    HStack {
+                        TagButton(title: "Shirts", action: {
+                            productVM.fetchData(forSubcategory: "shirts", inCategory: "mens")
+                        })
+                        TagButton(title: "Polos", action: {
+                            productVM.fetchData(forSubcategory: "polos", inCategory: "mens")
+                        })
+                        TagButton(title: "T-Shirts", action: {
+                            productVM.fetchData(forSubcategory: "t-shirts", inCategory: "mens")
+                        })
+                    }
+                }
+
                 if showWomenOptions {
-                                HStack {
-                                    TagButton(title: "Dresses")
-                                    TagButton(title: "Skirts")
-                                    TagButton(title: "Sandals")
-                                }
-                            }
+                    HStack {
+                        TagButton(title: "tops", action: {
+                            productVM.fetchData(forSubcategory: "tops", inCategory: "womens")
+                        })
+                        TagButton(title: "Bottoms", action: {
+                            productVM.fetchData(forSubcategory: "bottoms", inCategory: "womens")
+                        })
+                        TagButton(title: "Batik", action: {
+                            productVM.fetchData(forSubcategory: "batik", inCategory: "womens")
+                        })
+                    }
+                }
                 
                 LazyVGrid(columns: columns, spacing: 20) {
                     ForEach(productVM.productDM, id:\.id) { productData in
@@ -68,6 +85,8 @@ struct HomeView: View {
                     
                     
                 }.navigationTitle(Text("Dashboard"))
+                   
+
                     .toolbar {
 
                         NavigationLink {
@@ -156,12 +175,10 @@ struct HomeView: View {
     
     struct TagButton: View {
         var title: String
+        var action: () -> Void
         
         var body: some View {
-            Button(action: {
-                // Handle button tap
-                print("Selected: \(title)")
-            }) {
+            Button(action: action) { // Make sure to call the passed action here
                 Text(title)
                     .padding(.horizontal, 10)
                     .padding(.vertical, 5)
