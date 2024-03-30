@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1B27198A2BB87D4C005D7738 /* OrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2719892BB87D4C005D7738 /* OrderView.swift */; };
+		1B27198C2BB87D6C005D7738 /* OrderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B27198B2BB87D6C005D7738 /* OrderViewModel.swift */; };
+		1B27198E2BB87D7D005D7738 /* OrderDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B27198D2BB87D7D005D7738 /* OrderDataModel.swift */; };
+		1B2719902BB87DCA005D7738 /* UserDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B27198F2BB87DCA005D7738 /* UserDataModel.swift */; };
+		1B2719922BB87DE7005D7738 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2719912BB87DE7005D7738 /* UserViewModel.swift */; };
+		1B2719942BB894A3005D7738 /* CartDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2719932BB894A3005D7738 /* CartDataModel.swift */; };
 		1B48AAFE2BB6C9D600F3A9E5 /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B48AAFD2BB6C9D600F3A9E5 /* UserView.swift */; };
 		1B5F4F852BAB7D4100823CD1 /* SerandibApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5F4F842BAB7D4100823CD1 /* SerandibApp.swift */; };
 		1B5F4F872BAB7D4100823CD1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5F4F862BAB7D4100823CD1 /* ContentView.swift */; };
@@ -46,6 +52,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1B2719892BB87D4C005D7738 /* OrderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderView.swift; sourceTree = "<group>"; };
+		1B27198B2BB87D6C005D7738 /* OrderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewModel.swift; sourceTree = "<group>"; };
+		1B27198D2BB87D7D005D7738 /* OrderDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDataModel.swift; sourceTree = "<group>"; };
+		1B27198F2BB87DCA005D7738 /* UserDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataModel.swift; sourceTree = "<group>"; };
+		1B2719912BB87DE7005D7738 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
+		1B2719932BB894A3005D7738 /* CartDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartDataModel.swift; sourceTree = "<group>"; };
 		1B48AAFD2BB6C9D600F3A9E5 /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
 		1B5F4F812BAB7D4100823CD1 /* Serandib.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Serandib.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B5F4F842BAB7D4100823CD1 /* SerandibApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerandibApp.swift; sourceTree = "<group>"; };
@@ -159,6 +171,9 @@
 			isa = PBXGroup;
 			children = (
 				1B5F4FCC2BAF4F1300823CD1 /* ProductDataModel.swift */,
+				1B27198D2BB87D7D005D7738 /* OrderDataModel.swift */,
+				1B27198F2BB87DCA005D7738 /* UserDataModel.swift */,
+				1B2719932BB894A3005D7738 /* CartDataModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -168,6 +183,8 @@
 			children = (
 				1B5F4FD52BB010CD00823CD1 /* CartViewModel.swift */,
 				1B5F4FBA2BAF08B900823CD1 /* ProductViewModel.swift */,
+				1B27198B2BB87D6C005D7738 /* OrderViewModel.swift */,
+				1B2719912BB87DE7005D7738 /* UserViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -180,6 +197,7 @@
 				1B5F4FEB2BB2DD0E00823CD1 /* LoginView.swift */,
 				1B5F4FED2BB2EA4800823CD1 /* ProductDetailsView.swift */,
 				1B48AAFD2BB6C9D600F3A9E5 /* UserView.swift */,
+				1B2719892BB87D4C005D7738 /* OrderView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -330,19 +348,25 @@
 			buildActionMask = 2147483647;
 			files = (
 				1B5F4FB32BAB7F4E00823CD1 /* HomeView.swift in Sources */,
+				1B27198E2BB87D7D005D7738 /* OrderDataModel.swift in Sources */,
 				1B5F4FF02BB479C500823CD1 /* ColorPicker.swift in Sources */,
 				1B5F4FD32BAF774800823CD1 /* CartVeiw.swift in Sources */,
 				1B5F4FE62BB14FD400823CD1 /* ProductRow.swift in Sources */,
 				1B5F4F872BAB7D4100823CD1 /* ContentView.swift in Sources */,
+				1B2719902BB87DCA005D7738 /* UserDataModel.swift in Sources */,
 				1B5F4FEE2BB2EA4800823CD1 /* ProductDetailsView.swift in Sources */,
 				1B5F4FCD2BAF4F1300823CD1 /* ProductDataModel.swift in Sources */,
+				1B27198C2BB87D6C005D7738 /* OrderViewModel.swift in Sources */,
 				1B5F4F852BAB7D4100823CD1 /* SerandibApp.swift in Sources */,
 				1B5F4FD12BAF74DA00823CD1 /* CartButton.swift in Sources */,
+				1B27198A2BB87D4C005D7738 /* OrderView.swift in Sources */,
+				1B2719922BB87DE7005D7738 /* UserViewModel.swift in Sources */,
 				1B5F4FD62BB010CD00823CD1 /* CartViewModel.swift in Sources */,
 				1B5F4FEC2BB2DD0E00823CD1 /* LoginView.swift in Sources */,
 				1B5F4FBB2BAF08B900823CD1 /* ProductViewModel.swift in Sources */,
 				1B5F4FCF2BAF518600823CD1 /* ProductCard.swift in Sources */,
 				1B48AAFE2BB6C9D600F3A9E5 /* UserView.swift in Sources */,
+				1B2719942BB894A3005D7738 /* CartDataModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

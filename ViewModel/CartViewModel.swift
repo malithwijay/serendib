@@ -6,21 +6,103 @@
 //
 
 import Foundation
+import SwiftUI
 
 class CartVeiwModel: ObservableObject {
     
     @Published private(set) var products: [ProductDataModel] = []
+    @Published var cartDM = [CartDataModel]()
     @Published private(set) var total: Double = 0
+    @Published var showError : Bool = false
+    @Published var errorMessage : String = ""
+    @Published var showSuccess : Bool = false
+    
     
     func addToCart(product: ProductDataModel) {
         products.append(product)
         total += product.product_price
     }
-        func removeFromCart(product: ProductDataModel) {
+    func removeFromCart(product: ProductDataModel) {
             products = products.filter { $0.id != product.id }
             total -= product.product_price
         }
+    
+    func fetchData() {
+        guard let url = URL(string: "http://localhost:3000/api/cart") else {
+            return
+        }
+        
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            guard let data = data, error == nil else {
+                print("Error: \(error?.localizedDescription ?? "Unknown error")")
+                return
+            }
+            
+            do{
+                let decodedResponse = try JSONDecoder().decode([CartDataModel].self, from: data)
+                    DispatchQueue.main.async {
+                        self.cartDM = decodedResponse
+                    }
+                
+            } catch {
+                
+            }
+        }.resume()
+    }
+    
+    func addToCart(pid: Int, uid: Int, color: String, size: String) {
+        guard let url = URL(string: "http://localhost:3000/api/cart/insert") else {
+            print("Invalid URL")
+            return
+        }
+        
+        let cartData = CartDataModel(pid: pid, uid: uid, color: color, size: size)
+        guard let jsonData = try? JSONEncoder().encode(cartData) else {
+            DispatchQueue.main.async {
+                self.showError = true
+                self.errorMessage = "Failed to encode cart data"
+            }
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = jsonData
+        
+        URLSession.shared.dataTask(with: request) { [weak self] data, response, error in
+            if let error = error {
+                DispatchQueue.main.async {
+                    self?.showError = true
+                    self?.errorMessage = "Network request failed: \(error)"
+                }
+                return
+            }
+            
+            if let httpResponse = response as? HTTPURLResponse {
+                print("HTTP Status Code: \(httpResponse.statusCode)")
+                if httpResponse.statusCode == 200 {
+                    DispatchQueue.main.async {
+                        self?.showSuccess = true
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        self?.showError = true
+                        self?.errorMessage = "Server responded with status code: \(httpResponse.statusCode)"
+                    }
+                }
+            } else {
+                DispatchQueue.main.async {
+                    self?.showError = true
+                    self?.errorMessage = "Invalid response from the server"
+                }
+            }
+        }.resume()
+    }
+    
         
     }
+
+
 
 

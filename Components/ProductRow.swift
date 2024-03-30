@@ -11,6 +11,7 @@ struct ProductRow: View {
     
     @EnvironmentObject var cartVM : CartVeiwModel
     var product: ProductDataModel
+    //var cart: CartDataModel
     @State var getSelection = 0
     
     var body: some View {
@@ -60,6 +61,8 @@ struct ProductRow: View {
                 
                 
                 Text("$\(product.product_price, specifier: "%.2f")")
+                //Text(cart.color)
+                //Text(cart.size)
                     
             }
  

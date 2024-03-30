@@ -178,7 +178,7 @@ struct HomeView: View {
         var action: () -> Void
         
         var body: some View {
-            Button(action: action) { // Make sure to call the passed action here
+            Button(action: action) {
                 Text(title)
                     .padding(.horizontal, 10)
                     .padding(.vertical, 5)

@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ProductDetailsView: View {
     
+    @StateObject var cartVM : CartVeiwModel = CartVeiwModel()
     @State private var selectedSize: String = "Medium"
     @State private var selectedColor: Color = .blue
     
@@ -69,36 +70,45 @@ struct ProductDetailsView: View {
                 .font(.title3)
         }
         
-        Text("Select Color")
-        VStack {
-            ColorPicker(selectedColor: $selectedColor)
-
-           // Text("\(selectedColor.description)")
-              //  .font(.system(size: 10, design: .rounded))
-        }
-    
-        
-        Text("Select Size")
-        Picker("Select Size:", selection: $selectedSize) {
-            ForEach(["Small", "Medium", "Large", "XL"], id: \.self) { size in
-                Text(size).tag(size)
+        HStack {
+           
+            VStack {
+                Text("Select Color")
+                ColorPicker(selectedColor: $selectedColor)
+                
+                // Text("\(selectedColor.description)")
+                //  .font(.system(size: 10, design: .rounded))
             }
-        }.pickerStyle(.inline)
-         .padding(-40)
-        
+            
+            VStack {
+                //Text("Select Size")
+                Picker("Select Size:", selection: $selectedSize) {
+                    ForEach(["Small", "Medium", "Large", "XL"], id: \.self) { size in
+                        Text(size).tag(size)
+                    }
+                }.pickerStyle(.inline)
+                    .padding(-80)
+                    .padding(.top, 35)
+                    .clipped()
+                                .frame(minWidth: 0, maxWidth: 100)
+                                .labelsHidden()
+            }
+            
+        }
         
         
         Button(action:  {
-                
+            let colorString = selectedColor.description
+            cartVM.addToCart(pid: productDM.id, uid: 1, color: colorString, size: selectedSize)
         }) {
             Text("Add to Cart")
                 .font(.title)
                 .foregroundColor(.white)
-                .frame(width: 200, height: 50)
+                .frame(width: 180, height: 35)
                 .background(Color.black)
                 .cornerRadius(10)
             
-        }.padding()
+        }.padding(.top)
 
     }
     
