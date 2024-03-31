@@ -20,17 +20,17 @@ struct ProductCard: View {
                     case .empty:
                         ProgressView() // Placeholder while loading
                             .cornerRadius(20)
-                            .frame(width: 180, height: 250)
+                            .frame(width: 150, height: 210)
                     case .success(let image):
                         image
                             .resizable()
                             .cornerRadius(20)
-                            .frame(width: 180, height: 250)
+                            .frame(width: 150, height: 210)
                     case .failure(let error):
                         Text("Failed to load image")
                             .foregroundColor(.red)
                             .padding()
-                            .frame(width: 180, height: 250)
+                            .frame(width: 150, height: 210)
                             .overlay(
                                 RoundedRectangle(cornerRadius: 20)
                                     .stroke(Color.red, lineWidth: 1)
@@ -76,7 +76,7 @@ struct ProductCard: View {
                         .padding(.bottom, 8)
                 }
             }
-            .frame(width: 180, height: 250)
+            .frame(width: 150, height: 210)
             .shadow(radius: 5)
         }
     }

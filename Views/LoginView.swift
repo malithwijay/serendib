@@ -53,7 +53,7 @@ struct LoginView: View {
                                     .onAppear {
                                         userVM.fetchUser(email: userVM.email)
                                     }
-                                
+                            }
                                 VStack(alignment: .center,
                                        spacing: 20){
                                     Button{
@@ -80,7 +80,7 @@ struct LoginView: View {
                     }
                 }
                 
-            }else{
+            else{
                 
                 Image("user")
                     .resizable()

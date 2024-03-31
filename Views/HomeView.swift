@@ -29,11 +29,13 @@ struct HomeView: View {
                         productVM.fetchData(forCategory: "mens")
                         showMenOptions.toggle()
                         showWomenOptions = false
+                        
                     }
                     .padding()
-                    .background(Color.blue)
+                    .background(Color.black)
                     .foregroundColor(.white)
                     .cornerRadius(10)
+                    
                     
                     Button("Women") {
                         productVM.fetchData(forCategory: "womens")
@@ -41,7 +43,7 @@ struct HomeView: View {
                         showMenOptions = false
                     }
                     .padding()
-                    .background(Color.pink)
+                    .background(Color.black)
                     .foregroundColor(.white)
                     .cornerRadius(10)
                 }
@@ -123,11 +125,11 @@ struct HomeView: View {
                         }) {
                             VStack {
                                 Image(systemName: "house.fill")
-                                    .foregroundColor(.blue)
+                                    .foregroundColor(.black)
                                     .font(.system(size: 24))
                                     .padding()
                                 Text("Home")
-                                    .foregroundColor(.blue)
+                                    .foregroundColor(.black)
                                     .font(.system(size: 14))
                             }
                         }
@@ -139,11 +141,11 @@ struct HomeView: View {
                         }) {
                             VStack {
                                 Image(systemName: "shippingbox.fill")
-                                    .foregroundColor(.red)
+                                    .foregroundColor(.black)
                                     .font(.system(size: 24))
                                     .padding()
                                 Text("Orders")
-                                    .foregroundColor(.red)
+                                    .foregroundColor(.black)
                                     .font(.system(size: 14))
                             }
                         }
@@ -155,11 +157,11 @@ struct HomeView: View {
                         }) {
                             VStack {
                                 Image(systemName: "person.fill")
-                                    .foregroundColor(.green)
+                                    .foregroundColor(.black)
                                     .font(.system(size: 24))
                                     .padding()
                                 Text("Profile")
-                                    .foregroundColor(.green)
+                                    .foregroundColor(.black)
                                     .font(.system(size: 14))
                             }
                         }
