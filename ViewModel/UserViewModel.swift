@@ -35,7 +35,7 @@ class UserViewModel : ObservableObject{
     func login(email: String, password: String) {
         if email.isEmpty || password.isEmpty{
             showError=true
-            errorMessage="Username or Password Cannot be empty"
+            errorMessage="Username or Password Can't be empty!"
         } else {
             guard let url = URL(string: "http://localhost:3000/api/users/login") else {
                 self.errorMessage = "Invalid URL"

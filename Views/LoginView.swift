@@ -104,7 +104,7 @@ struct LoginView: View {
                     .padding(.vertical, 32)
                 
                 VStack {
-                    TextField("Email", text: $email)
+                    TextField("Username", text: $email)
                         .frame(width: 320, height: 50)
                         .padding(.horizontal)
                         .background(Color.gray.opacity(0.2))
