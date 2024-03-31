@@ -12,24 +12,62 @@ class CartViewModel: ObservableObject {
     
     @Published private(set) var products: [ProductDataModel] = []
     @Published var cartInsertDM = [CartDataModelInsert]()
-    @Published var cartRetrieveDM = [CartDataModelRetrieve]()
-    @Published private(set) var total: Double = 0
+    @Published var cartRetrieveDM: [CartDataModelRetrieve] = []
+    @Published var total: Double = 0.00
     @Published var showError : Bool = false
     @Published var errorMessage : String = ""
     @Published var showSuccess : Bool = false
+    @Published var items: [CartDataModelRetrieve] = []
     
     
     func addToCart(product: ProductDataModel) {
         products.append(product)
-        total += product.product_price
+        //total += product.product_price
     }
-    func removeFromCart(product: ProductDataModel) {
-            products = products.filter { $0.id != product.id }
-            total -= product.product_price
+//    func removeFromCart(product: CartDataModelRetrieve) {
+//            products = products.filter { $0.id != product.id }
+//            total -= product.product_price
+//    }
+    
+    func removeFromCart(item : CartDataModelRetrieve){
+        cartRetrieveDM = cartRetrieveDM.filter { $0.id != item.id }
+        calculateTotal()
+    }
+    
+    func calculateTotal() {
+        var totalAmount: Double = 0.0
+        for item in cartRetrieveDM {
+            totalAmount += item.product_price
         }
+        self.total = totalAmount
+    }
+    
+    func deleteCartItem(ForItemID id: String) {
+        guard let url = URL(string: "http://localhost:3000/api/cart/delete/\(id)") else {
+            self.errorMessage = "Invalid URL"
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let _ = data, error == nil else {
+                self.errorMessage = error?.localizedDescription ?? "Unknown error"
+                return
+            }
+            
+            
+            
+            DispatchQueue.main.async {
+                // Handle successful deletion if needed
+            }
+        }.resume()
+        //self.calculateTotal()
+    }
     
     func fetchData(email: String) {
-        guard let url = URL(string: "http://localhost:3000/api/cart/item\(email)") else {
+        guard let url = URL(string: "http://localhost:3000/api/cart/items/\(email)") else {
             return
         }
         
@@ -43,6 +81,7 @@ class CartViewModel: ObservableObject {
                 let decodedResponse = try JSONDecoder().decode([CartDataModelRetrieve].self, from: data)
                     DispatchQueue.main.async {
                         self.cartRetrieveDM = decodedResponse
+                        self.calculateTotal()
                     }
                 
             } catch {
@@ -85,6 +124,7 @@ class CartViewModel: ObservableObject {
                 if httpResponse.statusCode == 200 {
                     DispatchQueue.main.async {
                         self?.showSuccess = true
+                        self?.calculateTotal()
                     }
                 } else {
                     DispatchQueue.main.async {

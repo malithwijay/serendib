@@ -4,17 +4,19 @@
 //
 //  Created by Malith Wijayathunga on 2024-03-24.
 //
-
+import Foundation
 import SwiftUI
 
 struct CartVeiw: View {
     
     @EnvironmentObject var cartVM : CartViewModel
+    @StateObject var userVM : UserViewModel = UserViewModel()
     
     var body: some View {
         List{
-            if cartVM.products.count > 0 {
-                ForEach(cartVM.products, id: \.id) {
+            //Text("\(cartVM.cartRetrieveDM.count)")
+            if cartVM.cartRetrieveDM.count > 0 {
+                ForEach(cartVM.cartRetrieveDM, id: \.id) {
                     product in
                     ProductRow(product: product)
   
@@ -25,7 +27,16 @@ struct CartVeiw: View {
             }
             
             
-        }.navigationTitle(Text("My Cart"))
+        }
+        .onAppear{
+            cartVM.fetchData(email: userVM.username)
+            //cartVM.calculateTotal()
+        }
+        .onSubmit {
+            cartVM.fetchData(email: userVM.username)
+            //cartVM.calculateTotal()
+        }
+        .navigationTitle(Text("My Cart"))
             .padding(.top)
             
         

@@ -11,6 +11,7 @@ struct HomeView: View {
     
     @StateObject var cartVM : CartViewModel = CartViewModel()
     @StateObject var productVM : ProductViewModel = ProductViewModel()
+    @StateObject var userVM : UserViewModel = UserViewModel()
     @State private var showMenOptions = false
     @State private var showWomenOptions = false
     
@@ -86,7 +87,8 @@ struct HomeView: View {
                     
                     
                     
-                }.navigationTitle(Text("Dashboard"))
+                }
+                .navigationTitle(Text("Dashboard"))
                    
 
                     .toolbar {
@@ -95,8 +97,11 @@ struct HomeView: View {
                              CartVeiw()
                               .environmentObject(cartVM)
                         } label: {
-                            CartButton(numberOfProduct: cartVM.products.count)
+                            CartButton(numberOfProduct: cartVM.cartRetrieveDM.count)
                                                         
+                        }
+                        .onAppear{
+                            cartVM.fetchData(email: userVM.username)
                         }
                         
                         NavigationLink {

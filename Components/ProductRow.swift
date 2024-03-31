@@ -10,7 +10,7 @@ import SwiftUI
 struct ProductRow: View {
     
     @EnvironmentObject var cartVM : CartViewModel
-    var product: ProductDataModel
+    var product: CartDataModelRetrieve
     //var cart: CartDataModel
     @State var getSelection = 0
     
@@ -47,7 +47,8 @@ struct ProductRow: View {
                 .swipeActions(edge : .trailing, content: {
                     
                     Button {
-                        cartVM.removeFromCart(product: product)
+                        cartVM.deleteCartItem(ForItemID: "\(product.id)")
+                        cartVM.removeFromCart(item: product)
                     } label: {
                         Text("Delete")
                     }.tint(.red)

@@ -92,6 +92,7 @@ struct LoginView: View {
                         .padding(.horizontal)
                         .background(Color.gray.opacity(0.2))
                         .cornerRadius(5)
+                        .textInputAutocapitalization(.never)
                     
                     SecureField("Password", text: $password)
                         .frame(width: 320, height: 50)
