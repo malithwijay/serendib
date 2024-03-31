@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     
-    @StateObject var cartVM : CartVeiwModel = CartVeiwModel()
+    @StateObject var cartVM : CartViewModel = CartViewModel()
     @StateObject var productVM : ProductViewModel = ProductViewModel()
     @State private var showMenOptions = false
     @State private var showWomenOptions = false
@@ -121,7 +121,7 @@ struct HomeView: View {
                         
                         Button(action: {
                             
-
+                            
                         }) {
                             VStack {
                                 Image(systemName: "house.fill")

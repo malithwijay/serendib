@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ProductRow: View {
     
-    @EnvironmentObject var cartVM : CartVeiwModel
+    @EnvironmentObject var cartVM : CartViewModel
     var product: ProductDataModel
     //var cart: CartDataModel
     @State var getSelection = 0

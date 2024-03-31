@@ -9,11 +9,14 @@ import SwiftUI
 
 struct ProductDetailsView: View {
     
-    @StateObject var cartVM : CartVeiwModel = CartVeiwModel()
+    @StateObject var cartVM : CartViewModel = CartViewModel()
+    @StateObject var userVM : UserViewModel = UserViewModel()
+    
     @State private var selectedSize: String = "Medium"
     @State private var selectedColor: Color = .blue
     
     var productDM : ProductDataModel
+
     
     var body: some View {
         

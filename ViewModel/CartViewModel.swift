@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-class CartVeiwModel: ObservableObject {
+class CartViewModel: ObservableObject {
     
     @Published private(set) var products: [ProductDataModel] = []
     @Published var cartInsertDM = [CartDataModelInsert]()

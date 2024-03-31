@@ -16,7 +16,7 @@ struct UserRegisterView: View {
         @State private var password = ""
         @State private var conpassword = ""
         @State private var shouldNavigateToHome = false
-        @EnvironmentObject var cartVM : CartVeiwModel
+        @EnvironmentObject var cartVM : CartViewModel
         @StateObject var userRegVM : UserRegisterVeiwModel = UserRegisterVeiwModel()
         
         

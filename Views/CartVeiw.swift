@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CartVeiw: View {
     
-    @EnvironmentObject var cartVM : CartVeiwModel
+    @EnvironmentObject var cartVM : CartViewModel
     
     var body: some View {
         List{
@@ -57,5 +57,5 @@ struct CartVeiw: View {
 
 #Preview {
     CartVeiw()
-        .environmentObject(CartVeiwModel())
+        .environmentObject(CartViewModel())
 }
