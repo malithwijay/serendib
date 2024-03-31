@@ -18,7 +18,7 @@ struct ProductCard: View {
                 AsyncImage(url: imageURL) { phase in
                     switch phase {
                     case .empty:
-                        ProgressView() // Placeholder while loading
+                        ProgressView()
                             .cornerRadius(20)
                             .frame(width: 150, height: 210)
                     case .success(let image):
@@ -54,7 +54,7 @@ struct ProductCard: View {
                         .background(Color.black.opacity(0.8))
                         .cornerRadius(10)
                     
-                    Text("$ \(productDM.product_price , specifier: "%.2f")" )
+                    Text("Rs \(productDM.product_price , specifier: "%.2f")" )
                         .font(.headline)
                         .foregroundColor(.white)
                         .padding(.horizontal)
@@ -66,14 +66,17 @@ struct ProductCard: View {
                 
                 Button(action: {
                     cartVM.addToCart(product: productDM)
+                        
+                    
                 }) {
-                    Image(systemName: "cart.badge.plus")
-                        .foregroundColor(.black)
+                    Image(systemName: "eye")
+                        .foregroundColor(.white)
                         .padding()
-                        .background(Color.white)
+                        .background(Color.black.opacity(0.1))
                         .clipShape(Circle())
-                        .padding(.trailing, 8)
-                        .padding(.bottom, 8)
+                        .padding(.trailing, 1)
+                        .padding(.bottom, 160)
+                        
                 }
             }
             .frame(width: 150, height: 210)

@@ -61,9 +61,13 @@ struct ProductRow: View {
                     .bold()
                 
                 
-                Text("$\(product.product_price, specifier: "%.2f")")
-                //Text(cart.color)
-                //Text(cart.size)
+                Text("Rs \(product.product_price, specifier: "%.2f")")
+                
+                HStack{
+                    Text(product.size)
+                    Text(product.color.capitalized)
+                }
+                
                     
             }
  

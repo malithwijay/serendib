@@ -14,6 +14,7 @@ struct ProductDetailsView: View {
     
     @State private var selectedSize: String = "Medium"
     @State private var selectedColor: Color = .blue
+    @State private var getAction: Bool = false
     
     var productDM : ProductDataModel
 
@@ -26,7 +27,7 @@ struct ProductDetailsView: View {
                 AsyncImage(url: imageURL) { phase in
                     switch phase {
                     case .empty:
-                        ProgressView() // Placeholder while loading
+                        ProgressView() 
                             .cornerRadius(20)
                             .frame(width: 180, height: 250)
                     case .success(let image):
@@ -59,7 +60,7 @@ struct ProductDetailsView: View {
                     
                     
                     
-                    Text("$ \(productDM.product_price, specifier: "%.2f")")
+                    Text("Rs \(productDM.product_price, specifier: "%.2f")")
                         .font(.headline)
                         .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                 }.padding(.top, 20)
@@ -71,6 +72,8 @@ struct ProductDetailsView: View {
             
             Text(productDM.product_details)
                 .font(.title3)
+                .padding(.trailing, 5)
+                .padding(.leading, 5)
         }
         
         HStack {
@@ -79,8 +82,6 @@ struct ProductDetailsView: View {
                 Text("Select Color")
                 ColorPicker(selectedColor: $selectedColor)
                 
-                // Text("\(selectedColor.description)")
-                //  .font(.system(size: 10, design: .rounded))
             }
             
             VStack {
@@ -90,28 +91,33 @@ struct ProductDetailsView: View {
                         Text(size).tag(size)
                     }
                 }.pickerStyle(.inline)
-                    .padding(-80)
+                    .padding(-40)
                     .padding(.top, 35)
                     .clipped()
-                                .frame(minWidth: 0, maxWidth: 100)
+                                .frame(minWidth: 0, maxWidth: 140)
                                 .labelsHidden()
             }
             
         }
-        
+        if cartVM.showSuccess {
+            Text("Item added to cart!")
+                .foregroundStyle(.green)
+        }
         
         Button(action:  {
             let colorString = selectedColor.description
             cartVM.addToCart(pid: productDM.id, uid: 3, color: colorString, size: selectedSize)
+            
         }) {
             Text("Add to Cart")
                 .font(.title)
                 .foregroundColor(.white)
-                .frame(width: 180, height: 35)
+                .frame(width: 180, height: 45)
                 .background(Color.black)
-                .cornerRadius(10)
+                .cornerRadius(20)
             
-        }.padding(.top)
+        }
+        .padding(.top)
 
     }
     

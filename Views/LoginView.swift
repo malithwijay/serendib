@@ -46,9 +46,10 @@ struct LoginView: View {
                                     .foregroundColor(.gray)
                                     .padding(.bottom, 20)
                             } else {
-                                Text("Loading...")
+                                Text("")
                                     .onAppear {
                                         userVM.fetchUser(email: userVM.email)
+                                        
                                     }
                             }
                         }
@@ -57,14 +58,30 @@ struct LoginView: View {
                 
                 VStack(alignment: .center, spacing: 20) {
                     Button {
-//                        password = ""
-//                        email = ""
+
                         userVM.logout()
                     } label: {
                         HStack {
                             HStack(spacing: 3) {
-                                Text("Sign out here")
-                                    .bold()
+                               
+                                
+                                HStack {
+                                    
+                                    VStack {
+                                        Text(userVM.username)
+                                            .bold()
+                                            .padding()
+                                            .foregroundColor(Color.black)
+                                        
+                                            .bold()
+                                            .padding()
+                                            .foregroundColor(Color.black)
+                                        
+                                        Text("Sign out here")
+                                            .bold()
+                                    }
+                                }
+                                
                             }
                             .font(.system(size: 16))
                             .tint(.red)

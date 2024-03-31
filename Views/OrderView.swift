@@ -8,11 +8,48 @@
 import SwiftUI
 
 struct OrderView: View {
+    
+    @EnvironmentObject var cartVM : CartViewModel
+    @StateObject var userVM : UserViewModel = UserViewModel()
+    @StateObject var orderVM : OrderViewModel = OrderViewModel()
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        List{
+            if orderVM.orders.count > 0 {
+                ForEach(orderVM.orders, id: \.id) {
+                    product in
+                    Section("Order No. \(product.id)"){
+                        Text("Order Date: \(product.date)")
+                        Text("Total: \(product.total,specifier: "%.2f")")
+                    }
+                }
+                
+            }else{
+                Text("No pending orders !")
+            }
+            
+            
+        }
+        .onAppear{
+            orderVM.fetchData(email: userVM.username)
+            
+        }
+        .onSubmit {
+            cartVM.fetchData(email: userVM.username)
+            
+        }
+        .navigationTitle(Text("My Orders"))
+        .padding(.top)
+        
+        
     }
+    
 }
 
+
+
 #Preview {
+    
     OrderView()
+        .environmentObject(CartViewModel())
 }

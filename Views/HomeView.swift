@@ -26,6 +26,19 @@ struct HomeView: View {
             ScrollView {
                 
                 HStack {
+                    
+                    
+                    Button("All") {
+                        productVM.fetchData()
+                        showMenOptions.toggle()
+                        showWomenOptions = false
+                        
+                    }
+                    .padding()
+                    .background(Color.black)
+                    .foregroundColor(.white)
+                    .cornerRadius(10)
+                    
                     Button("Men") {
                         productVM.fetchData(forCategory: "mens")
                         showMenOptions.toggle()
@@ -47,6 +60,15 @@ struct HomeView: View {
                     .background(Color.black)
                     .foregroundColor(.white)
                     .cornerRadius(10)
+                    
+                    NavigationLink {
+                         LoginView()
+                          .environmentObject(cartVM)
+                    } label: {
+                        Image(systemName: "arrow.up.arrow.down")
+                            
+                        
+                    }
                 }
             
                 
@@ -105,7 +127,15 @@ struct HomeView: View {
                         }
                         
                         NavigationLink {
-                             UserView()
+                             OrderView()
+                              .environmentObject(cartVM)
+                        } label: {
+                            Image(systemName: "shippingbox")
+                            
+                        }
+                        
+                        NavigationLink {
+                             LoginView()
                               .environmentObject(cartVM)
                         } label: {
                             Image(systemName: "person.circle")
@@ -115,68 +145,10 @@ struct HomeView: View {
                 
                 
             }.navigationViewStyle(StackNavigationViewStyle())
-            
-            
+
         }
         
-        VStack {
-                    
-                    HStack {
-                        Spacer()
-                        
-                        Button(action: {
-                            
-                            
-                        }) {
-                            VStack {
-                                Image(systemName: "house.fill")
-                                    .foregroundColor(.black)
-                                    .font(.system(size: 24))
-                                    .padding()
-                                Text("Home")
-                                    .foregroundColor(.black)
-                                    .font(.system(size: 14))
-                            }
-                        }
-                        
-                        Spacer()
-                        
-                        Button(action: {
-
-                        }) {
-                            VStack {
-                                Image(systemName: "shippingbox.fill")
-                                    .foregroundColor(.black)
-                                    .font(.system(size: 24))
-                                    .padding()
-                                Text("Orders")
-                                    .foregroundColor(.black)
-                                    .font(.system(size: 14))
-                            }
-                        }
-                        
-                        Spacer()
-                        
-                        Button(action: {
-                         
-                        }) {
-                            VStack {
-                                Image(systemName: "person.fill")
-                                    .foregroundColor(.black)
-                                    .font(.system(size: 24))
-                                    .padding()
-                                Text("Profile")
-                                    .foregroundColor(.black)
-                                    .font(.system(size: 14))
-                            }
-                        }
-                        
-                        Spacer()
-                    }
-
-                    .background(Color.white)
-                
-               }
+               
    
     }
     

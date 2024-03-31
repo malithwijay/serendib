@@ -11,15 +11,15 @@ struct CartVeiw: View {
     
     @EnvironmentObject var cartVM : CartViewModel
     @StateObject var userVM : UserViewModel = UserViewModel()
+    @StateObject var orderVM : OrderViewModel = OrderViewModel()
     
     var body: some View {
         List{
-            //Text("\(cartVM.cartRetrieveDM.count)")
             if cartVM.cartRetrieveDM.count > 0 {
                 ForEach(cartVM.cartRetrieveDM, id: \.id) {
                     product in
                     ProductRow(product: product)
-  
+                    
                 }
                 
             }else{
@@ -30,37 +30,45 @@ struct CartVeiw: View {
         }
         .onAppear{
             cartVM.fetchData(email: userVM.username)
-            //cartVM.calculateTotal()
+            
         }
         .onSubmit {
             cartVM.fetchData(email: userVM.username)
-            //cartVM.calculateTotal()
+            
         }
         .navigationTitle(Text("My Cart"))
-            .padding(.top)
-            
+        .padding(.top)
+        
         
         HStack{
             Text("your cart total is")
             Spacer()
-            Text("$ \(cartVM.total, specifier: "%.2f")").bold()
+            Text("Rs \(cartVM.total, specifier: "%.2f")").bold()
         }
         .padding()
         
         
         
         Button(action:{
-            //loginVM.verifyLogin()
+            let currentDate = Date()
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateStyle = .long
+            var date =  dateFormatter.string(from: currentDate)
+            orderVM.OrderPlace(date: date, total: "\(cartVM.total)", email: userVM.username)
+            for data in cartVM.cartRetrieveDM {
+                cartVM.deleteCartItem(ForItemID: "\(data.id)")
+                cartVM.removeFromCart(item: data)
+            }
         },label: {
             RoundedRectangle(cornerRadius: 10).frame(height:50)
                 .padding(.horizontal,47)
                 .padding(.top)
                 .foregroundColor(.black)
-                }).overlay{
-                    Text("Checkout").bold()
-                        .foregroundStyle(.white)
-                        .padding(.top)
-                }
+        }).overlay{
+            Text("Checkout").bold()
+                .foregroundStyle(.white)
+                .padding(.top)
+        }
         
     }
     
