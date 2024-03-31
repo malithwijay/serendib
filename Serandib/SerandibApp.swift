@@ -11,9 +11,9 @@ import SwiftUI
 struct SerandibApp: App {
     var body: some Scene {
         WindowGroup {
-            HomeView()
+            //HomeView()
             
-            //LoginView()
+            LoginView()
         }
     }
 }

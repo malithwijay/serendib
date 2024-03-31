@@ -94,7 +94,7 @@ struct HomeView: View {
                               .environmentObject(cartVM)
                         } label: {
                             CartButton(numberOfProduct: cartVM.products.count)
-                            
+                                                        
                         }
                         
                         NavigationLink {
@@ -118,6 +118,7 @@ struct HomeView: View {
                         Spacer()
                         
                         Button(action: {
+                            
 
                         }) {
                             VStack {
@@ -150,14 +151,14 @@ struct HomeView: View {
                         Spacer()
                         
                         Button(action: {
-                            
+                         
                         }) {
                             VStack {
                                 Image(systemName: "person.fill")
                                     .foregroundColor(.green)
                                     .font(.system(size: 24))
                                     .padding()
-                                Text("Sign  Out")
+                                Text("Profile")
                                     .foregroundColor(.green)
                                     .font(.system(size: 14))
                             }

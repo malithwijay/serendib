@@ -9,80 +9,144 @@ import SwiftUI
 
 struct LoginView: View {
     
-    @State private var email = ""
-    @State private var password = ""
-    @State private var shouldNavigateToHome = false
-    @EnvironmentObject var cartVM : CartVeiwModel
-    
-    
-    private var homeViewModel: ProductViewModel {
-        ProductViewModel()
-    }
+    @State private var email : String = ""
+    @State private var password : String = ""
+    @State private var showEmail : String = ""
+    @State private var showName : String = ""
+    @StateObject var userVM = UserViewModel()
+    @ObservedObject var viewModel = UserViewModel()
     
     var body: some View {
-        NavigationView {
-            
-            VStack(spacing: 16) {
-                Spacer()
+        NavigationStack{
+            if userVM.authenticated{
+                NavigationStack{
+                    ZStack{
+                        VStack {
+                            Image("user")
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(width: 120, height: 120)
+                                .clipShape(Circle())
+                                .overlay(Circle().stroke(Color.white, lineWidth: 4))
+                                .shadow(radius: 7)
+                                .padding(.top, 50)
+                            if let user = userVM.user{
+                                
+                                Text("\(user.fname)")
+                                    .font(.title)
+                                    .fontWeight(.bold)
+                                    .padding(.bottom, 5)
+                                
+                                Text(user.email)
+                                    .font(.subheadline)
+                                    .foregroundColor(.gray)
+                                    .padding(.bottom, 5)
+                                
+                                Text(user.address)
+                                    .font(.subheadline)
+                                    .foregroundColor(.gray)
+                                    .padding(.bottom, 20)
+                            }
+                            
+                            else {
+                                Text("Loading...")
+                                    .onAppear {
+                                        userVM.fetchUser(email: userVM.email)
+                                    }
+                                
+                                VStack(alignment: .center,
+                                       spacing: 20){
+                                    Button{
+                                        password=""
+                                        email=""
+                                        userVM.logout()
+                                    }label:{
+                                        HStack{
+                                            HStack(spacing: 3){
+                                                Text("Sign out here")
+                                                    .bold()
+                                            }
+                                            .font(.system(size: 16))
+                                            .tint(.red)
+                                        }
+                                    }
+                                }.frame(maxWidth: .infinity)
+                            }
+                            
+                        }
+                        .opacity(0.8)
+                        Spacer()
+                        
+                    }
+                }
                 
-                Image("loginSplash")
+            }else{
+                
+                Image("user")
                     .resizable()
-                    .cornerRadius(20)
-                    .frame(width: 500)
-                    .frame(height: 500)
-                    .scaledToFit()
+                    .scaledToFill()
+                    .frame(width:100,height:120)
+                    .padding(.vertical,32)
                 
-                TextField("Email", text: $email)
-                    .frame(width: 320, height: 50)
-                    .padding(.horizontal)
-                    .background(Color.gray.opacity(0.2))
-                    .cornerRadius(5)
+                
+                VStack{
+                    TextField("Email", text: $email)
+                        .frame(width: 320, height: 50)
+                        .padding(.horizontal)
+                        .background(Color.gray.opacity(0.2))
+                        .cornerRadius(5)
                     
-                
-                SecureField("Password", text: $password)
-                    .frame(width: 320, height: 50)
-                    .padding(.horizontal)
-                    .background(Color.gray.opacity(0.2))
-                    .cornerRadius(5)
-                    .padding(.bottom,20)
-                
-                
-                
-                Button("Login") {
-                   //viewModel.login(email: email, password: password)
+                    
+                    SecureField("Password", text: $password)
+                        .frame(width: 320, height: 50)
+                        .padding(.horizontal)
+                        .background(Color.gray.opacity(0.2))
+                        .cornerRadius(5)
+                        .padding(.bottom,20)
+                    
                 }
-                .frame(width: 200)
-                .padding(10)
-                .background(Color.black)
-                .foregroundColor(.white)
-                .cornerRadius(10)
-                
-                
-//                if let errorMessage = viewModel.errorMessage {
-//                    Text(errorMessage)
-//                        .foregroundColor(.red)
-//                }
-                NavigationLink(destination: HomeView(), isActive: $shouldNavigateToHome) {
-                 EmptyView()
+                .padding(.horizontal)
+                .padding(.vertical)
+                if userVM.showError {
+                    Text(userVM.errorMessage)
+                        .foregroundStyle(.red)
+                        .font(.system(size: 14))
+                }else{
+                    Text("")
                 }
-                .hidden()
                 
+                Button(action:{
+                    userVM.login(email: email, password: password)
+                },label: {
+                    HStack{
+                        Text("SIGN IN")
+                            .foregroundStyle(.white).bold()
+                        
+                    }
+                    .foregroundColor(.white)
+                    .frame(width: 300)
+                    .frame(height: 50)
+                })
+                .background(Color(.black))
+                .cornerRadius(20)
+                .padding(.top)
+                
+                NavigationLink{
+                    UserRegisterView()
+                } label : {
+                    HStack(spacing: 3){
+                        Text("Not Registered Yet?")
+                        Text("   Register Now")
+                            .bold()
+                    }
+                    .font(.system(size: 16))
+                    .padding(.top)
+                }
             }
-            .padding()
-            .onAppear {
-//                viewModel.onLoginSuccess = {
-//                    self.shouldNavigateToHome = true
-//                }
-            }
-            
-            
-            
-            
         }
     }
 }
-
-
+                
 #Preview {
     LoginView()
 }

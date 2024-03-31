@@ -11,12 +11,16 @@ import SwiftUI
 class CartVeiwModel: ObservableObject {
     
     @Published private(set) var products: [ProductDataModel] = []
-    @Published var cartDM = [CartDataModel]()
+    @Published var cartInsertDM = [CartDataModelInsert]()
+    @Published var cartRetrieveDM = [CartDataModelRetrieve]()
     @Published private(set) var total: Double = 0
     @Published var showError : Bool = false
     @Published var errorMessage : String = ""
     @Published var showSuccess : Bool = false
     
+    init() {
+        fetchData()
+    }
     
     func addToCart(product: ProductDataModel) {
         products.append(product)
@@ -39,9 +43,9 @@ class CartVeiwModel: ObservableObject {
             }
             
             do{
-                let decodedResponse = try JSONDecoder().decode([CartDataModel].self, from: data)
+                let decodedResponse = try JSONDecoder().decode([CartDataModelRetrieve].self, from: data)
                     DispatchQueue.main.async {
-                        self.cartDM = decodedResponse
+                        self.cartRetrieveDM = decodedResponse
                     }
                 
             } catch {
@@ -56,7 +60,7 @@ class CartVeiwModel: ObservableObject {
             return
         }
         
-        let cartData = CartDataModel(pid: pid, uid: uid, color: color, size: size)
+        let cartData = CartDataModelInsert(pid: pid, uid: uid, color: color, size: size)
         guard let jsonData = try? JSONEncoder().encode(cartData) else {
             DispatchQueue.main.async {
                 self.showError = true

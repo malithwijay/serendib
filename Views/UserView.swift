@@ -15,10 +15,13 @@ struct UserView: View {
     @State private var updatedUsername = ""
     @State private var updatedEmail = ""
     @State private var updatedAddress = ""
+    @State private var showEmail : String = ""
+    @State private var showName : String = ""
+    @StateObject var userVM = UserViewModel()
     
     var body: some View {
         VStack {
-                    Image("user_image")
+                    Image("logo")
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                         .frame(width: 120, height: 120)
