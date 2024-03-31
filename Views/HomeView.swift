@@ -60,17 +60,26 @@ struct HomeView: View {
                     .background(Color.black)
                     .foregroundColor(.white)
                     .cornerRadius(10)
-                    
-                    NavigationLink {
-                         LoginView()
-                          .environmentObject(cartVM)
-                    } label: {
-                        Image(systemName: "arrow.up.arrow.down")
-                            
-                        
+                       
                     }
+                
+                .toolbar{
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Menu {
+                            Button("Price Low to High") {
+                                cartVM.sortState = .priceLowToHigh
+                                cartVM.sortProducts()
+                            }
+                            Button("Price High to Low") {
+                                cartVM.sortState = .priceHighToLow
+                                cartVM.sortProducts()
+                            }
+                        } label: {
+                            Label("Sort", systemImage: "arrow.up.arrow.down")
+                        }
+                    }
+                    
                 }
-            
                 
                 if showMenOptions {
                     HStack {

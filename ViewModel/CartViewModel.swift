@@ -42,6 +42,25 @@ class CartViewModel: ObservableObject {
         self.total = totalAmount
     }
     
+    enum SortState {
+            case none, priceLowToHigh, priceHighToLow
+        }
+
+
+        @Published var sortState: SortState = .none
+
+    func sortProducts() {
+        switch sortState {
+        case .priceLowToHigh:
+            products.sort(by: { $0.product_price < $1.product_price })
+        case .priceHighToLow:
+            products.sort(by: { $0.product_price > $1.product_price })
+        case .none:
+            break
+        }
+    }
+       
+    
     func deleteCartItem(ForItemID id: String) {
         guard let url = URL(string: "http://localhost:3000/api/cart/delete/\(id)") else {
             self.errorMessage = "Invalid URL"

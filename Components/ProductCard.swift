@@ -13,6 +13,7 @@ struct ProductCard: View {
     
     var body: some View {
         NavigationLink(destination: ProductDetailsView(productDM: productDM)) {
+            
             ZStack(alignment: .bottomTrailing) {
                 let imageURL = URL(string: productDM.product_image)!
                 AsyncImage(url: imageURL) { phase in
