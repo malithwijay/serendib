@@ -31,7 +31,6 @@ struct LoginView: View {
                                 .shadow(radius: 7)
                                 .padding(.top, 50)
                             if let user = userVM.user {
-                                
                                 Text(user.fname)
                                     .font(.title)
                                     .fontWeight(.bold)
@@ -58,8 +57,8 @@ struct LoginView: View {
                 
                 VStack(alignment: .center, spacing: 20) {
                     Button {
-                        password = ""
-                        email = ""
+//                        password = ""
+//                        email = ""
                         userVM.logout()
                     } label: {
                         HStack {
@@ -114,6 +113,7 @@ struct LoginView: View {
                 
                 Button(action: {
                     userVM.login(email: email, password: password)
+                    
                 }, label: {
                     HStack {
                         Text("SIGN IN")

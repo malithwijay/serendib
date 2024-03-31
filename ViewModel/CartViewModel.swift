@@ -18,9 +18,6 @@ class CartViewModel: ObservableObject {
     @Published var errorMessage : String = ""
     @Published var showSuccess : Bool = false
     
-    init() {
-        fetchData()
-    }
     
     func addToCart(product: ProductDataModel) {
         products.append(product)
@@ -31,8 +28,8 @@ class CartViewModel: ObservableObject {
             total -= product.product_price
         }
     
-    func fetchData() {
-        guard let url = URL(string: "http://localhost:3000/api/cart") else {
+    func fetchData(email: String) {
+        guard let url = URL(string: "http://localhost:3000/api/cart/item\(email)") else {
             return
         }
         

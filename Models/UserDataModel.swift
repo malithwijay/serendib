@@ -8,13 +8,8 @@
 import Foundation
 
 struct UserDataModel: Codable {
-    
-    var id: Int
     var fname: String
     var lname: String
     var address: String
     var email: String
-    var password: String
-
-    
 }

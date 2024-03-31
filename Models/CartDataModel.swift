@@ -16,12 +16,10 @@ struct CartDataModelInsert : Codable {
 }
 
 struct CartDataModelRetrieve : Codable {
-    var id: Int
+    
     var product_name: String
     var product_price: Double
     var product_image: String
-    var pid: Int
-    var uid: Int
     var color: String
     var size: String
     

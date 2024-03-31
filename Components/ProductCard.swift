@@ -10,7 +10,6 @@ import SwiftUI
 struct ProductCard: View {
     @EnvironmentObject var cartVM: CartViewModel
     var productDM: ProductDataModel
-    var userDM: UserDataModel
     
     var body: some View {
         NavigationLink(destination: ProductDetailsView(productDM: productDM)) {

@@ -102,7 +102,7 @@ struct ProductDetailsView: View {
         
         Button(action:  {
             let colorString = selectedColor.description
-            cartVM.addToCart(pid: productDM.id, uid: 1, color: colorString, size: selectedSize)
+            cartVM.addToCart(pid: productDM.id, uid: 3, color: colorString, size: selectedSize)
         }) {
             Text("Add to Cart")
                 .font(.title)
